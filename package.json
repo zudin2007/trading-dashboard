@@ -4,7 +4,6 @@
   "homepage": "https://zudin2007.github.io/trading-dashboard",
   "private": true,
   "dependencies": {
-    ...
   },
   "scripts": {
   "predeploy": "npm run build",
