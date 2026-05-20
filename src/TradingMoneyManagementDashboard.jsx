@@ -10,15 +10,6 @@ const TradingDashboard = () => {
 
   const [positions, setPositions] = useState([
     { id: 1, emiten: 'ACES', hargaBuy: 710, hargaSL: 655, portfolio: 'ihsg' },
-    { id: 2, emiten: 'BBCA', hargaBuy: 4850, hargaSL: 4650, portfolio: 'ihsg' },
-    { id: 3, emiten: 'TLKM', hargaBuy: 3250, hargaSL: 3050, portfolio: 'ihsg' },
-    { id: 4, emiten: 'ASII', hargaBuy: 7100, hargaSL: 6750, portfolio: 'ihsg' },
-    { id: 5, emiten: 'NVDA', hargaBuy: 120.5, hargaSL: 115.2, portfolio: 'global' },
-    { id: 6, emiten: 'AAPL', hargaBuy: 185.25, hargaSL: 178.5, portfolio: 'global' },
-    { id: 7, emiten: 'MSFT', hargaBuy: 412.75, hargaSL: 398.5, portfolio: 'global' },
-    { id: 8, emiten: 'TSLA', hargaBuy: 245.30, hargaSL: 232.5, portfolio: 'global' },
-    { id: 9, emiten: 'BTC', hargaBuy: 45250, hargaSL: 42500, portfolio: 'crypto' },
-    { id: 10, emiten: 'ETH', hargaBuy: 2850, hargaSL: 2650, portfolio: 'crypto' },
     { id: 11, emiten: 'SOL', hargaBuy: 185.50, hargaSL: 170.25, portfolio: 'crypto' }
   ]);
 
