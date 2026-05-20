@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { TrendingUp, DollarSign, AlertCircle, Plus, Trash2, Eye, EyeOff } from 'lucide-react';
 
 const TradingDashboard = () => {
-  // State untuk Portfolio Parameters
   const [portfolios, setPortfolios] = useState({
     global: { name: 'GLOBAL', equity: 27586, currency: 'USD', rpt: 0.40, feeBuy: 0.15, feeSell: 0.25 },
     ihsg: { name: 'IHSG', equity: 100000000, currency: 'IDR', rpt: 0.40, feeBuy: 0.15, feeSell: 0.25 },
     crypto: { name: 'KRIPTO', equity: 50000, currency: 'USD', rpt: 0.40, feeBuy: 0.25, feeSell: 0.25 }
   });
 
-  // State untuk Trading Positions
   const [positions, setPositions] = useState([
     { id: 1, emiten: 'ACES', hargaBuy: 710, hargaSL: 655, portfolio: 'ihsg' },
     { id: 2, emiten: 'BBCA', hargaBuy: 4850, hargaSL: 4650, portfolio: 'ihsg' },
@@ -187,10 +185,9 @@ const TradingDashboard = () => {
             </h2>
             <button
               onClick={() => setShowForm(!showForm)}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg transition font-medium text-sm"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg transition font-medium text-sm text-white"
               style={{ 
-                background: 'linear-gradient(135deg, #3b82f6, #60a5fa)',
-                color: '#ffffff'
+                background: 'linear-gradient(135deg, #3b82f6, #60a5fa)'
               }}
             >
               <Plus className="w-4 h-4" /> Add Position
@@ -306,7 +303,7 @@ const TradingDashboard = () => {
                         <td className="px-6 py-4 text-right text-blue-900 font-bold text-lg">
                           {visibleMetrics ? (
                             portfolios[position.portfolio].currency === 'IDR' 
-                              ? metrics.lotBuy 
+                              ? (parseFloat(metrics.lotBuy) / 100).toFixed(0)
                               : parseFloat(metrics.lotBuy).toFixed(4)
                           ) : '•••••'}
                         </td>
