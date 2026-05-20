@@ -1,4 +1,5 @@
 {
+  "homepage": "https://zudin2007.github.io/trading-dashboard"
   "name": "trading-money-management-dashboard",
   "version": "1.0.0",
   "description": "Professional Trading Money Management Calculator Dashboard",
@@ -33,4 +34,4 @@
     ]
   }
 }
-"homepage": "https://zudin2007.github.io/trading-dashboard"
+
