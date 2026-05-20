@@ -301,12 +301,12 @@ const TradingDashboard = () => {
                           {visibleMetrics ? metrics.nominalRisiko : '•••••'} {metrics.currency}
                         </td>
                         <td className="px-6 py-4 text-right text-blue-900 font-bold text-lg">
-                          {visibleMetrics ? (
-                            portfolios[position.portfolio].currency === 'IDR' 
-                              ? (parseFloat(metrics.lotBuy) / 100).toFixed(0)
-                              : parseFloat(metrics.lotBuy).toFixed(4)
-                          ) : '•••••'}
-                        </td>
+  {visibleMetrics ? (
+    position.portfolio === 'ihsg' 
+      ? (parseFloat(metrics.lotBuy) / 100).toFixed(0)
+      : parseFloat(metrics.lotBuy).toFixed(4)
+  ) : '•••••'}
+</td>
                         <td className="px-6 py-4 text-right text-blue-900 font-semibold">
                           {visibleMetrics ? metrics.nominalBuy : '•••••'} {metrics.currency}
                         </td>
