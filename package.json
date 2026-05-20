@@ -1,4 +1,20 @@
 {
+  "homepage": "https://zudin2007.github.io/trading-dashboard",
+  "name": "trading-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    ...
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
+    "start": "react-scripts start",
+    ...
+  },
+  ...
+}
   "name": "trading-money-management-dashboard",
   "version": "1.0.0",
   "homepage": "./",
