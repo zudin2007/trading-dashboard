@@ -20,31 +20,18 @@ const TradingDashboard = () => {
   const [editingId, setEditingId] = useState(null);
 
   const calculateRiskMetrics = (portfolio) => {
-    // Risk Nominal = (Equity × RPT) / 100
     const nominalRisiko = (portfolio.equity * portfolio.rpt) / 100;
     return { nominalRisiko };
   };
 
   const calculatePosition = (position) => {
     const portfolio = portfolios[position.portfolio];
-    
-    // Range % = |Price Buy - SL| / Price Buy × 100
     const range = Math.abs(position.hargaBuy - position.hargaSL) / position.hargaBuy * 100;
-    
-    // Risk Nominal
     const { nominalRisiko } = calculateRiskMetrics(portfolio);
-    
-    // Fee Total (dalam %) = (Fee Beli + Fee Jual) = total biaya transaksi
-    // Contoh: feeBuy 0.15% + feeSell 0.25% = 0.40% total
     const feeTotalPersen = portfolio.feeBuy + portfolio.feeSell;
-    const feeDecimal = feeTotalPersen / 100; // Ubah ke desimal: 0.40% = 0.004
-    
-    // Lot Buy = Risk Nominal / (Price × (Range% / 100)) / (1 + Fee Decimal)
-    // Penyederhanaan: Risk / (Price × Range%) / (1 + Fee)
+    const feeDecimal = feeTotalPersen / 100;
     const denominator = position.hargaBuy * (range / 100) * (1 + feeDecimal);
     const lotBuy = nominalRisiko / denominator;
-    
-    // Nominal Buy = Lot × Price
     const nominalBuy = lotBuy * position.hargaBuy;
     
     return {
@@ -118,7 +105,6 @@ const TradingDashboard = () => {
 
   return (
     <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)' }}>
-      {/* Header */}
       <div className="border-b border-slate-200 sticky top-0 z-50 backdrop-blur-sm" style={{ background: 'rgba(255, 255, 255, 0.95)' }}>
         <div className="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -126,7 +112,7 @@ const TradingDashboard = () => {
               <TrendingUp className="w-6 h-6" style={{ color: '#ffffff' }} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-900" style={{ fontFamily: 'Playfair Display, serif' }}>Trading Dashboard</h1>
+              <h1 className="text-2xl font-bold text-slate-900">Trading Dashboard</h1>
               <p className="text-sm text-slate-500">Money Management & Risk Calculator</p>
             </div>
           </div>
@@ -140,9 +126,8 @@ const TradingDashboard = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-8 py-12">
-        {/* Portfolio Overview Section */}
         <div className="mb-16">
-          <h2 className="text-lg font-semibold text-slate-900 mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>Portfolio Overview</h2>
+          <h2 className="text-lg font-semibold text-slate-900 mb-6">Portfolio Overview</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {Object.entries(portfolios).map(([key, portfolio]) => {
               const { nominalRisiko } = calculateRiskMetrics(portfolio);
@@ -157,7 +142,6 @@ const TradingDashboard = () => {
                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)'
                   }}
                 >
-                  {/* Portfolio Header */}
                   <div className="flex items-start justify-between mb-8">
                     <div>
                       <h3 className="text-xl font-bold text-slate-900" style={{ color: color.text }}>
@@ -168,9 +152,7 @@ const TradingDashboard = () => {
                     <Settings className="w-5 h-5 text-slate-400" />
                   </div>
 
-                  {/* Main Metrics */}
                   <div className="space-y-6">
-                    {/* Equity */}
                     <div>
                       <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Modal</label>
                       <div className="flex items-baseline gap-2">
@@ -185,7 +167,6 @@ const TradingDashboard = () => {
                       </div>
                     </div>
 
-                    {/* RPT & Risk */}
                     <div className="grid grid-cols-2 gap-6">
                       <div>
                         <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">RPT %</label>
@@ -206,7 +187,6 @@ const TradingDashboard = () => {
                       </div>
                     </div>
 
-                    {/* Fees */}
                     <div className="pt-4 border-t border-slate-200">
                       <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4">Biaya Trading</label>
                       <div className="grid grid-cols-2 gap-4">
@@ -239,12 +219,9 @@ const TradingDashboard = () => {
           </div>
         </div>
 
-        {/* Trading Positions Section */}
         <div>
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-lg font-semibold text-slate-900" style={{ fontFamily: 'Playfair Display, serif' }}>
-              Trading Positions
-            </h2>
+            <h2 className="text-lg font-semibold text-slate-900">Trading Positions</h2>
             <button
               onClick={() => {
                 setEditingId(null);
@@ -252,22 +229,14 @@ const TradingDashboard = () => {
                 setShowForm(!showForm);
               }}
               className="flex items-center gap-2 px-6 py-3 rounded-xl transition font-semibold text-sm text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-              style={{ 
-                background: 'linear-gradient(135deg, #3b82f6, #60a5fa)'
-              }}
+              style={{ background: 'linear-gradient(135deg, #3b82f6, #60a5fa)' }}
             >
               <Plus className="w-4 h-4" /> Add Position
             </button>
           </div>
 
-          {/* Add/Edit Position Form */}
           {showForm && (
-            <div 
-              className="rounded-2xl p-8 mb-8 border-2 border-blue-300 shadow-lg"
-              style={{ 
-                background: '#ffffff'
-              }}
-            >
+            <div className="rounded-2xl p-8 mb-8 border-2 border-blue-300 shadow-lg" style={{ background: '#ffffff' }}>
               <h3 className="font-semibold text-slate-900 mb-6">{editingId ? 'Edit Trading Position' : 'New Trading Position'}</h3>
               <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                 <div>
@@ -334,7 +303,6 @@ const TradingDashboard = () => {
             </div>
           )}
 
-          {/* Positions Table */}
           <div className="rounded-2xl border border-slate-200 overflow-hidden shadow-lg" style={{ background: '#ffffff' }}>
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -353,6 +321,9 @@ const TradingDashboard = () => {
                 <tbody>
                   {positions.map((position, idx) => {
                     const metrics = calculatePosition(position);
+                    const lotDisplay = position.portfolio === 'ihsg' 
+                      ? (parseFloat(metrics.lotBuy) / 100).toFixed(0)
+                      : parseFloat(metrics.lotBuy).toFixed(6);
                     return (
                       <tr 
                         key={position.id}
@@ -374,11 +345,7 @@ const TradingDashboard = () => {
                           {visibleMetrics ? metrics.nominalRisiko : '•••••'} {metrics.currency}
                         </td>
                         <td className="px-6 py-4 text-right text-slate-900 font-bold text-lg">
-                          {visibleMetrics ? (
-                            position.portfolio === 'ihsg' 
-                              ? (parseFloat(metrics.lotBuy) / 100).toFixed(0)
-                              : parseFloat(metrics.lotBuy).toFixed(6)
-                          ) : '•••••'}
+                          {visibleMetrics ? lotDisplay : '•••••'}
                         </td>
                         <td className="px-6 py-4 text-right text-slate-900 font-semibold">
                           {visibleMetrics ? metrics.nominalBuy : '•••••'} {metrics.currency}
@@ -416,12 +383,8 @@ const TradingDashboard = () => {
           </div>
         </div>
 
-        {/* Footer Info */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-          <div 
-            className="rounded-2xl p-6 border border-slate-200 flex gap-4 shadow-lg"
-            style={{ background: '#ffffff' }}
-          >
+          <div className="rounded-2xl p-6 border border-slate-200 flex gap-4 shadow-lg" style={{ background: '#ffffff' }}>
             <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
             <div>
               <h4 className="font-semibold text-slate-900 mb-2">Bagaimana Cara Kerja?</h4>
@@ -431,10 +394,7 @@ const TradingDashboard = () => {
             </div>
           </div>
 
-          <div 
-            className="rounded-2xl p-6 border border-slate-200 flex gap-4 shadow-lg"
-            style={{ background: '#ffffff' }}
-          >
+          <div className="rounded-2xl p-6 border border-slate-200 flex gap-4 shadow-lg" style={{ background: '#ffffff' }}>
             <TrendingUp className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
             <div>
               <h4 className="font-semibold text-slate-900 mb-2">Tips Money Management</h4>
@@ -461,3 +421,4 @@ const TradingDashboard = () => {
 };
 
 export default TradingDashboard;
+
