@@ -1,5 +1,5 @@
 import React from 'react';
-import TradingDashboard from './TradingDashboard';
+import TradingDashboard from './TradingMoneyManagementDashboard';
 import './App.css';
 
 function App() {
