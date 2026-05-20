@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { TrendingUp, DollarSign, AlertCircle, Plus, Trash2, Eye, EyeOff } from 'lucide-react';
 
 const TradingDashboard = () => {
@@ -84,10 +84,6 @@ const TradingDashboard = () => {
   };
 
   // Calculate total metrics
-  const totalEquity = Object.values(portfolios).reduce((sum, p) => {
-    const priceFactor = p.currency === 'USD' ? 1 : 1; // Simplified
-    return sum + p.equity;
-  }, 0);
 
   const [visibleMetrics, setVisibleMetrics] = useState(true);
 
