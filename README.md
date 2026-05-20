@@ -3,7 +3,7 @@
 Professional **Trading Money Management Calculator** - Dashboard untuk manajemen risiko trading yang otomatis menghitung ukuran posisi (Lot Buy) yang aman berdasarkan modal dan batasan risiko.
 
 ## 🌐 Live Demo
-**[Klik di sini untuk akses dashboard online](https://trading-dashboard-demo.vercel.app)** *(akan diupdate setelah deploy)*
+**[Klik di sini untuk akses dashboard online](https://6a0d0fbc419ece862b0860d7--fanciful-starship-2817ca.netlify.app/)** *(akan diupdate setelah deploy)*
 
 ---
 
