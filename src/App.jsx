@@ -1,13 +1,9 @@
 import React from 'react';
 import TradingDashboard from './TradingMoneyManagementDashboard';
-import './App.css';
+import './index.css';
 
 function App() {
-  return (
-    <div className="App">
-      <TradingDashboard />
-    </div>
-  );
+  return <TradingDashboard />;
 }
 
 export default App;
