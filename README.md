@@ -3,7 +3,7 @@
 Professional **Trading Money Management Calculator** - Dashboard untuk manajemen risiko trading yang otomatis menghitung ukuran posisi (Lot Buy) yang aman berdasarkan modal dan batasan risiko.
 
 ## 🌐 Live Demo
-**[Klik di sini ](https://agent-6a389d7daf6748786d5--ifbtc-moneymanagement.netlify.app/)))** *(akan diupdate setelah deploy)*
+**(https://agent-6a389d7daf6748786d5--ifbtc-moneymanagement.netlify.app/)))**
 
 ---
 
