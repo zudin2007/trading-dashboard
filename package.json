@@ -1,7 +1,7 @@
 {
   "name": "trading-money-management-dashboard",
   "version": "1.0.0",
-  "homepage": "https://zudin2007.github.io/trading-dashboard",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
