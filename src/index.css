@@ -22,8 +22,3 @@ code {
 html {
   scroll-behavior: smooth;
 }
-
-/* Tailwind directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
